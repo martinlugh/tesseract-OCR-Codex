@@ -13,6 +13,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Comparator;
+import java.util.UUID;
 
 @Service
 public class TempFileManagerImpl implements TempFileManager {
@@ -38,8 +39,8 @@ public class TempFileManagerImpl implements TempFileManager {
     @Override
     public Path saveUpload(MultipartFile file, OcrTaskContext context) {
         try {
-            String name = file.getOriginalFilename() == null ? "upload.bin" : file.getOriginalFilename();
-            Path path = context.getTaskTempDir().resolve(name);
+            String safeName = sanitizeFileName(file.getOriginalFilename());
+            Path path = context.getTaskTempDir().resolve(safeName);
             file.transferTo(path);
             return path;
         } catch (IOException e) {
@@ -76,5 +77,18 @@ public class TempFileManagerImpl implements TempFileManager {
             });
         } catch (IOException ignored) {
         }
+    }
+
+    private String sanitizeFileName(String originalName) {
+        if (originalName == null || originalName.isBlank()) {
+            return "upload-" + UUID.randomUUID() + ".bin";
+        }
+        String normalized = originalName.replace("\\", "/");
+        String baseName = normalized.substring(normalized.lastIndexOf('/') + 1).trim();
+        String safe = baseName.replaceAll("[^A-Za-z0-9._-]", "_");
+        if (safe.isBlank() || ".".equals(safe) || "..".equals(safe)) {
+            return "upload-" + UUID.randomUUID() + ".bin";
+        }
+        return safe;
     }
 }
