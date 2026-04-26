@@ -1,0 +1,44 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: ocr-cloud-service
+  servlet:
+    multipart:
+      max-file-size: 20MB
+      max-request-size: 20MB
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  pattern:
+    level: "%5p [traceId:%X{traceId}]"
+
+ocr:
+  engine:
+    # 本地 tessdata 目录，目录下需包含 chi_sim.traineddata 和 eng.traineddata
+    datapath: ./tessdata
+    language: chi_sim+eng
+    psm: 3
+    oem: 1
+    timeout-seconds: 60
+    tesseract-command: tesseract
+    temp-dir: ./tmp/ocr
+    prefer-tess4j: true
+    max-file-size-mb: 20
+    max-pages: 20
+    task-timeout-seconds: 180
+    pdf-dpi: 300
+    normalized-dpi: 300
+    executor-core-pool-size: 4
+    executor-max-pool-size: 16
+    executor-queue-capacity: 100
+    temp-file-retention-minutes: 120
