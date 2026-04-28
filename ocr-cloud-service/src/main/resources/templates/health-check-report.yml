@@ -1,0 +1,139 @@
+templateCode: health-check-report-v1
+documentType: HEALTH_CHECK_REPORT
+matchKeywords:
+  - 体检
+  - 检验
+  - 报告
+  - 生化
+  - 血常规
+fields:
+  - fieldCode: NAME
+    fieldName: 姓名
+    aliases: ["姓名"]
+    patterns:
+      - '(?<name>姓名)[:：]?\s*(?<value>[\u4e00-\u9fa5A-Za-z·]{1,20})'
+  - fieldCode: GENDER
+    fieldName: 性别
+    aliases: ["性别"]
+    patterns:
+      - '(?<name>性别)[:：]?\s*(?<value>男|女)'
+  - fieldCode: AGE
+    fieldName: 年龄
+    aliases: ["年龄"]
+    patterns:
+      - '(?<name>年龄)[:：]?\s*(?<value>\d{1,3})\s*(?<unit>岁)?'
+  - fieldCode: CHECK_DATE
+    fieldName: 检查日期
+    aliases: ["检查日期", "体检日期", "报告日期"]
+    patterns:
+      - '(?<name>检查日期|体检日期|报告日期)[:：]?\s*(?<value>\d{4}[-./年]\d{1,2}[-./月]\d{1,2}日?)'
+  - fieldCode: ORG
+    fieldName: 体检机构
+    aliases: ["体检机构", "医院", "机构"]
+    patterns:
+      - '(?<name>体检机构|医院|机构)[:：]?\s*(?<value>[^\s]{2,40})'
+  - fieldCode: HEIGHT
+    fieldName: 身高
+    aliases: ["身高"]
+    patterns:
+      - '(?<name>身高)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>cm|厘米)'
+  - fieldCode: WEIGHT
+    fieldName: 体重
+    aliases: ["体重"]
+    patterns:
+      - '(?<name>体重)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>kg|公斤)'
+  - fieldCode: BMI
+    fieldName: BMI
+    aliases: ["BMI"]
+    patterns:
+      - '(?<name>BMI)[:：]?\s*(?<value>\d+(?:\.\d+)?)'
+  - fieldCode: SBP
+    fieldName: 收缩压
+    aliases: ["收缩压", "高压"]
+    patterns:
+      - '(?<name>收缩压|高压)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmHg)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: DBP
+    fieldName: 舒张压
+    aliases: ["舒张压", "低压"]
+    patterns:
+      - '(?<name>舒张压|低压)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmHg)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: HEART_RATE
+    fieldName: 心率
+    aliases: ["心率"]
+    patterns:
+      - '(?<name>心率)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>bpm|次/分)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: GLU
+    fieldName: 空腹血糖
+    aliases: ["空腹血糖", "葡萄糖"]
+    patterns:
+      - '(?<name>空腹血糖|葡萄糖)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmol/L|mmol/l)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: TC
+    fieldName: 总胆固醇
+    aliases: ["总胆固醇"]
+    patterns:
+      - '(?<name>总胆固醇)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmol/L|mmol/l)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: TG
+    fieldName: 甘油三酯
+    aliases: ["甘油三酯"]
+    patterns:
+      - '(?<name>甘油三酯)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmol/L|mmol/l)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: HDL_C
+    fieldName: 高密度脂蛋白胆固醇
+    aliases: ["高密度脂蛋白胆固醇", "HDL"]
+    patterns:
+      - '(?<name>高密度脂蛋白胆固醇|HDL)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmol/L|mmol/l)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: LDL_C
+    fieldName: 低密度脂蛋白胆固醇
+    aliases: ["低密度脂蛋白胆固醇", "LDL"]
+    patterns:
+      - '(?<name>低密度脂蛋白胆固醇|LDL)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmol/L|mmol/l)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: UA
+    fieldName: 尿酸
+    aliases: ["尿酸"]
+    patterns:
+      - '(?<name>尿酸)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>μmol/L|umol/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: CREA
+    fieldName: 肌酐
+    aliases: ["肌酐"]
+    patterns:
+      - '(?<name>肌酐)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>μmol/L|umol/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: BUN
+    fieldName: 尿素氮
+    aliases: ["尿素氮"]
+    patterns:
+      - '(?<name>尿素氮)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>mmol/L|mmol/l)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: ALT
+    fieldName: 谷丙转氨酶 ALT
+    aliases: ["谷丙转氨酶", "ALT"]
+    patterns:
+      - '(?<name>谷丙转氨酶|ALT)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>U/L|u/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: AST
+    fieldName: 谷草转氨酶 AST
+    aliases: ["谷草转氨酶", "AST"]
+    patterns:
+      - '(?<name>谷草转氨酶|AST)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>U/L|u/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: GGT
+    fieldName: γ-谷氨酰转移酶 GGT
+    aliases: ["γ-谷氨酰转移酶", "GGT"]
+    patterns:
+      - '(?<name>γ-谷氨酰转移酶|GGT)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>U/L|u/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: WBC
+    fieldName: 白细胞
+    aliases: ["白细胞", "WBC"]
+    patterns:
+      - '(?<name>白细胞|WBC)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>10\^9/L|x10\^9/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: RBC
+    fieldName: 红细胞
+    aliases: ["红细胞", "RBC"]
+    patterns:
+      - '(?<name>红细胞|RBC)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>10\^12/L|x10\^12/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: HGB
+    fieldName: 血红蛋白
+    aliases: ["血红蛋白", "HGB"]
+    patterns:
+      - '(?<name>血红蛋白|HGB)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>g/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
+  - fieldCode: PLT
+    fieldName: 血小板
+    aliases: ["血小板", "PLT"]
+    patterns:
+      - '(?<name>血小板|PLT)[:：]?\s*(?<value>\d+(?:\.\d+)?)\s*(?<unit>10\^9/L|x10\^9/L)?\s*(?<range>[\d\-.~]+)?\s*(?<flag>↑|↓|H|L)?'
